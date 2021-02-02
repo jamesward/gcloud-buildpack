@@ -27,10 +27,19 @@ jobs:
         run: pack package-buildpack --publish ghcr.io/jamesward/gcloud-buildpack
         working-directory: ./buildpack
 
+      - id: register-settings
+        run: |
+          #!/usr/bin/env bash
+          set -euo pipefail
+          DIGEST="$(crane digest ${PACKAGE}:latest)"
+          echo "::set-output name=address::${PACKAGE}@${DIGEST}"
+        env:
+          PACKAGE: ghcr.io/jamesward/gcloud-buildpack
+
       - name: Register
         uses: docker://ghcr.io/buildpacks/actions/registry/request-add-entry:4.0.0
         with:
           token: ${{ secrets.CR_PAT }}
           id: jamesward/gcloud
-          address: ghcr.io/jamesward/gcloud-buildpacks@latest
+          address: ${{ steps.register-settings.outputs.address }}
           version: 0.0.1
