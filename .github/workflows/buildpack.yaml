@@ -26,3 +26,10 @@ jobs:
       - name: Build and Publish
         run: pack package-buildpack --publish ghcr.io/jamesward/gcloud-buildpack
         working-directory: ./buildpack
+
+      - name: Register
+        uses: ghcr.io/buildpacks/actions/registry/request-add-entry:4.0.0
+        with:
+          token: ${{ secrets.CR_PAT }}
+          id: jamesward/gcloud
+          address: ghcr.io/jamesward/gcloud-buildpack
