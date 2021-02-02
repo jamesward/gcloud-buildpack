@@ -25,5 +25,4 @@ jobs:
 
       - name: Build and Publish
         run: pack package-buildpack --publish ghcr.io/jamesward/gcloud-buildpack
-        with:
-          context: ./buildpack
+        working-directory: ./buildpack
