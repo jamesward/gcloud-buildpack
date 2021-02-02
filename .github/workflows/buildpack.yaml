@@ -1,0 +1,27 @@
+name: Build and Publish gcloud-buildpack
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_publish_buildpack:
+    name: Build and Publish gcloud-buildpack
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - name: Login to GitHub Package Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.CR_PAT }}
+
+      - name: Setup pack
+        uses: buildpacks/github-actions/setup-pack@v4.0.0
+
+      - name: Build and Publish
+        run: pack buildpack package --config buildpack/package.toml --publish ghcr.io/jamesward/gcloud-buildpack

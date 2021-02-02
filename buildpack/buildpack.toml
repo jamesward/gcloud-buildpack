@@ -1,0 +1,10 @@
+api = "0.2"
+
+[buildpack]
+id = "jamesward/gcloud"
+version = "0.0.1"
+name = "gcloud buildpack"
+homepage = "https://github.com/jamesward/gcloud-buildpack"
+
+[[stacks]]
+id = "google"

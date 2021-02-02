@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+readonly LAYERS_DIR=$1
+
+readonly APP_DIR="$LAYERS_DIR/app"
+
+mkdir -p $APP_DIR
+
+cp -r . $APP_DIR
+
+cat > "$APP_DIR.toml" << EOF
+launch = true
+EOF
+
+for FILE in *.sh; do
+
+  NAME=${FILE%".sh"}
+
+  echo "---> Creating process: $NAME"
+
+  cat >> "$LAYERS_DIR/launch.toml" <<EOF
+[[processes]]
+type = "$NAME"
+command = "$APP_DIR/$FILE"
+direct = true
+EOF
+
+done
+
