@@ -28,7 +28,7 @@ jobs:
         working-directory: ./buildpack
 
       - name: Register
-        uses: ghcr.io/buildpacks/actions/registry/request-add-entry:4.0.0
+        uses: ghcr.io/buildpacks/actions/registry/request-add-entry@4.0.0
         with:
           token: ${{ secrets.CR_PAT }}
           id: jamesward/gcloud
