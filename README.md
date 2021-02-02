@@ -1,10 +1,20 @@
 gcloud buildpack
 ----------------
 
+Easily package up shell scripts that use gcloud into container images.
 
+## Using gcloud-buildpack
 
+1. Create a project containing a `.sh` file that uses gcloud.
+1. Build your project with `pack`:
+    ```
+    pack build your-image-name \
+      --buildpack ghcr.io/jamesward/gcloud-buildpack \
+      --builder gcr.io/buildpacks/builder:v1 \
+      --run-image ghcr.io/jamesward/gcloud-buildpack-run
+    ```
 
-## Test
+## Testing gcloud-buildpack
 
 ```
 pack build sample-gcloud-app \
