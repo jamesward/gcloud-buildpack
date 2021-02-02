@@ -32,5 +32,5 @@ jobs:
         with:
           token: ${{ secrets.CR_PAT }}
           id: jamesward/gcloud
-          address: ghcr.io/jamesward/gcloud-buildpack
+          address: ghcr.io/jamesward/gcloud-buildpacks@latest
           version: 0.0.1
