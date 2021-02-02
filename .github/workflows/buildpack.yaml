@@ -33,4 +33,4 @@ jobs:
           token: ${{ secrets.CR_PAT }}
           id: jamesward/gcloud
           address: ghcr.io/jamesward/gcloud-buildpack
-          version: ${{ GITHUB_SHA }}
+          version: ${{ github.sha }}
