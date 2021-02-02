@@ -24,5 +24,6 @@ jobs:
         uses: buildpacks/github-actions/setup-pack@v4.0.0
 
       - name: Build and Publish
-        context: ./buildpack
         run: pack package-buildpack --publish ghcr.io/jamesward/gcloud-buildpack
+        with:
+          context: ./buildpack
