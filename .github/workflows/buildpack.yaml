@@ -24,4 +24,4 @@ jobs:
         uses: buildpacks/github-actions/setup-pack@v4.0.0
 
       - name: Build and Publish
-        run: pack buildpack package --config buildpack/package.toml --publish ghcr.io/jamesward/gcloud-buildpack
+        run: pack package-buildpack --config buildpack/package.toml --publish ghcr.io/jamesward/gcloud-buildpack
