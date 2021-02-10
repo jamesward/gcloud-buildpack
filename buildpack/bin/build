@@ -6,7 +6,9 @@ readonly APP_DIR="$LAYERS_DIR/app"
 
 mkdir -p $APP_DIR
 
-cp -r . $APP_DIR
+cp -rp . $APP_DIR
+
+rm -rf $APP_DIR/.git*
 
 cat > "$APP_DIR.toml" << EOF
 launch = true
