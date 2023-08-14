@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+  schedule:
+    - cron: '0 0 * * 0'
 
 jobs:
   build_and_publish_buildpack:
@@ -21,7 +23,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup pack
-        uses: buildpacks/github-actions/setup-pack@v5.0.0
+        uses: buildpacks/github-actions/setup-pack@v5.3.1
 
       - name: Build and Publish
         run: pack package-buildpack --publish ghcr.io/jamesward/gcloud-buildpack
