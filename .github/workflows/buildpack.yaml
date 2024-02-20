@@ -23,7 +23,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup pack
-        uses: buildpacks/github-actions/setup-pack@v5.5.2
+        uses: buildpacks/github-actions/setup-pack@v5.5.3
 
       - name: Build and Publish
         run: pack package-buildpack --publish ghcr.io/jamesward/gcloud-buildpack
